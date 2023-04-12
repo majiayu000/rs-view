@@ -2,7 +2,9 @@ use diesel::pg::PgConnection;
 use diesel::prelude::*;
 use dotenvy::dotenv;
 // use diesel::r2d2::ConnectionManager;
-use diesel_migrations::EmbeddedMigrations;
+use diesel_migrations::{
+    EmbeddedMigrations,
+    MigrationHarness};
 // use diesel::r2d2::Pool;
 use lazy_static::lazy_static;
 use r2d2;
@@ -32,6 +34,10 @@ pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!();
 //     POOL.get()
 //         .map_err(|e| error::new(500, format!("Failed getting db connection: {e}")))
 // }
+
+fn run_migration(conn: &mut PgConnection) {
+    conn.run_pending_migrations(MIGRATIONS).unwrap();
+}
 
 pub fn establish_connection() -> PgConnection {
     dotenv().ok();
