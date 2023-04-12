@@ -35,9 +35,9 @@ use std::env;
 //         .map_err(|e| error::new(500, format!("Failed getting db connection: {e}")))
 // }
 
-fn run_migration(conn: &mut PgConnection) {
-    conn.run_pending_migrations(MIGRATIONS).unwrap();
-}
+// fn run_migration(conn: &mut PgConnection) {
+//     conn.run_pending_migrations(MIGRATIONS).unwrap();
+// }
 
 pub fn establish_connection() -> PgConnection {
     dotenv().ok();
