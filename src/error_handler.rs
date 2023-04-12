@@ -32,6 +32,13 @@ impl From<DieselError> for AccountError {
     }
 }
 
+
+impl fmt::Display for AccountError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Error {}: {}", self.error_status_code, self.error_message)
+    }
+}
+
 impl ResponseError for AccountError {
     fn error_response(&self) -> HttpResponse {
         let status_code = match StatusCode::from_u16(self.error_status_code) {
