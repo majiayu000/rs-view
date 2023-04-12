@@ -13,7 +13,7 @@ use std::env;
 // type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 // pub type DbConnection = r2d2::PooledConnection<ConnectionManager<PgConnection>>;
 
-pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!();
+// pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!();
 
 // lazy_static! {
 //     static ref POOL: Pool = {
