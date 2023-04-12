@@ -1,11 +1,13 @@
 use actix_web::http::StatusCode;
 use actix_web::{HttpResponse, ResponseError};
 use diesel::result::Error as DieselError;
-use serde::Deserialize;
+use serde::{
+    Deserialize,
+    Serialize};
 use serde_json::json;
 use std::fmt;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AccountError {
     pub error_status_code: u16,
     pub error_message: String,
